@@ -82,6 +82,7 @@ body {
 }
 
 .accordion__title > button {
+    position: relative;
     background: #ffffff;
     display: block;
     height: 100%;
@@ -101,11 +102,11 @@ body {
     background-position: center center;
     display: block;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 16px;
     right: 2px;
     height: 16.25px;
     width: 16.25px;
+    transition: all 0.75s;
 }
 
 .accordion__content {
@@ -114,7 +115,7 @@ body {
     max-height: 0;
     padding: 0;
     overflow: hidden;
-    transition: all 0.8s;
+    transition: all 0.8s cubic-bezier(.6,0,.23,1.01);
 }
 
 .accordion__content p {
@@ -125,6 +126,10 @@ body {
 
 .accordion__content.open {
     max-height: 280px;
+}
+
+.accordion__title.open > button::after {
+    transform: rotate(180deg);
 }
 
 @media (min-width: 767px) {
