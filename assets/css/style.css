@@ -4,7 +4,7 @@
     --soft-red: hsl(14, 88%, 65%);
 
     /* background gradient */
-    --soft-voilet: hsl(273, 75%, 66%);
+    --soft-violet: hsl(273, 75%, 66%);
     --soft-blue: hsl(240, 73%, 65%);
 
     /* neutral text */
@@ -40,11 +40,17 @@
     margin-inline: auto;
 }
 
+img,
+picture {
+    display: block;
+    max-width: 100%;
+}
+
 body {
     min-height: 100vh;
     font-family: 'Kumbh Sans', sans-serif;
     font-size: 0.75rem;
-    background-color: var(--soft-voilet);
+    background: linear-gradient(to bottom, var(--soft-violet), var(--soft-blue));
     color: var(--desat-blue);
     display: flex;
     align-items: center;
@@ -54,35 +60,75 @@ body {
 }
 
 .faq {
+    position: relative;
     padding-inline: 2em;
+    /* padding-inline: calc(2vw - 2em); */
     padding-bottom: 3.5em;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
     border-radius: 20px;
+    margin-top: 170px;
+    max-width: 920px;
+}
+
+.faq-illustration {
+    height: 110px;
+    /* width: 88%; */
+    width: 88%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    /* border: 1px solid red; */
+    position: relative;
+    overflow: visible;
+}
+
+.hang-box {
+    position: absolute;
+    top: -100%;
+    width: 100%;
+    border: 2px solid black;
+}
+
+.faq-illustration picture:first-child {
+    width: 100%;
+    z-index: 3;
+}
+
+.faq-illustration picture:first-child + picture {
+    position: absolute;
+    width: 100%;
+    bottom: -25px;
+    z-index: 2;
+    /* border: 1px solid yellow; */
+}
+
+picture > img {
+    width: 100%;
 }
 
 .faq-title {
     text-align: center;
     font-size: 2rem;
     font-weight: 700;
-    margin-top: 1em;
+    margin-top: .8em;
     margin-bottom: .8em;
 }
 
 .faq-accordion {
     width: 100%;
+    /* border: 1px solid red; */
 }
 
 .accordion__title {
     position: relative;
-    /* border: 1px solid black; */
-    /* font-weight: 700; */
 }
 
 .accordion__title > button {
     position: relative;
+    color: var(--v-drk-grayish-blue);
     background: #ffffff;
     display: block;
     height: 100%;
@@ -137,7 +183,33 @@ body {
     transform: rotateZ(180deg);
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
+
+    .faq {
+        flex-direction: row;
+        padding-top: 2em;
+        padding-bottom: 4em;
+    }
+
+    .faq-illustration {
+        max-width: 50%;
+    }
+
+    .faq-illustration,
+    .faq-accordion {
+        width: 50%;
+        flex: 1 1 0;
+    }
+
+    .hang-box {
+        top: -50px;
+        left: -83px;
+    }
+
+    .faq-title {
+        text-align: left;
+    }
+
     .accordion__title > button:hover,
     .accordion__title > button:focus {
         color: var(--soft-red);
